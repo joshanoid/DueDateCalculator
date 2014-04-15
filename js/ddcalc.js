@@ -2,7 +2,16 @@ define(['jquery', 'underscore', 'backbone', 'jqueryuitime'], function ($, _, Bac
     "use strict";
     return {
 		run: function(){
-			console.log(arguments);
+			//Initialize timepicker
+			$("#ddc-submit-date").datetimepicker();
+			
+			//Initialize turnaround hours spinner
+			$("#ddc-turnaround-hours").spinner({
+				min: 0
+			});
+			
+			//Buttonize!
+			$("#ddc-submit").button();
 		}
 	};
 });

@@ -3,6 +3,7 @@ html, body{
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
+	font-family: Arial, Verdana;
 }
 
 .clearer{
@@ -16,7 +17,7 @@ html, body{
 	margin: 0px auto;
 }
 
-#container h1{
+h1, h2{
 	text-align: center;
 }
 
@@ -27,6 +28,40 @@ html, body{
 
 #container #due-date-calculator #ddc-left,
 #container #due-date-calculator #ddc-right{
-	width: 300px;
 	float: left;
+	height: 100px;
+}
+
+#container #due-date-calculator #ddc-left{
+	width: 400px;
+}
+
+#container #due-date-calculator #ddc-left #ddc-submit-date{
+	background: none;
+	border: 0px none;
+}
+
+#container #due-date-calculator #ddc-right{
+	width: 200px;
+}
+
+#container #due-date-calculator #ddc-right #ddc-submit{
+	width: 80%;
+	height: 50%;
+	margin-top: 12.5%;
+}
+
+#container #ddc-calculated-container #ddc-calculated-date{
+	text-align: center;
+	font-size: 52px;
+	font-weight: bold;
+}
+
+#container .ddc-line{
+	padding: 10px 15px;
+}
+
+#container .ddc-line label{
+	display: inline-block;
+	min-width: 130px;
 }
