@@ -1,7 +1,9 @@
-define(['jquery', 'underscore', 'backbone', 'jqueryuitime'], function ($, _, Backbone) {
-    "use strict";
+define(['jquery', 'underscore', 'backbone', 'ddModel', 'ddMainView', 'jqueryuitime'], function ($, _, Backbone, ddm, ddv) {
     return {
 		run: function(){
+			//Generate layout
+			var layout = new ddv();
+			
 			//Initialize timepicker
 			$("#ddc-submit-date").datetimepicker();
 			
@@ -11,7 +13,7 @@ define(['jquery', 'underscore', 'backbone', 'jqueryuitime'], function ($, _, Bac
 			});
 			
 			//Buttonize!
-			$("#ddc-submit").button();
+			$("#ddc-submit").button();			
 		}
 	};
 });

@@ -5,7 +5,10 @@ require.config({
 		jqueryui	: "https://code.jquery.com/ui/1.10.4/jquery-ui.min",
 		jqueryuitime: "libs/jquery-ui-timepicker-addon",
 		underscore	: "libs/underscore-min",
-		backbone	: "libs/backbone-min"
+		backbone	: "libs/backbone-min",
+		text		: "libs/text",
+		ddModel		: "models/ddmodel",
+		ddMainView	: "views/ddview"
 	},
 	shim: {
 		jquery:{
