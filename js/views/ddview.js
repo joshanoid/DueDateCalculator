@@ -8,6 +8,11 @@ define(['jquery', 'underscore', 'backbone', 'ddModel', 'text!templates/ddview.ht
 				this.$el.append(this.template);
 				this.calculatedDateDOM = $("#ddc-calculated-date"); //Cache
 				
+				//A trick to trigger validate on start
+				ddm.ddmodel.set({ 
+					submitDate: false
+				}, {validate : true});
+				
 				//Initialize timepicker
 				$("#ddc-submit-date").datetimepicker({
 					onSelect: function(date){
@@ -39,7 +44,7 @@ define(['jquery', 'underscore', 'backbone', 'ddModel', 'text!templates/ddview.ht
 			calculate: function(event){
 				var dm = ddm.ddmodel;
 				
-				this.calculatedDateDOM.text( dm.isValid() ? dm.calculate() : dm.validationError );
+				this.calculatedDateDOM.text( !!dm.validationError ? dm.validationError : dm.calculate() );
 			}
 		});
 	}
