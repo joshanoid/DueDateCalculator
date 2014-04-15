@@ -4,9 +4,28 @@
 		<title>DueDateCalculator</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" />
+		<link rel="stylesheet" href="css/ddc.css" />
 		<script src="js/libs/require.js" data-main="js/init"></script>
 	</head>
 	<body>
-		<div>DDCalc</div>
+		<div id="container">
+			<h1>Due Date Calculator</h1>
+			<div id="due-date-calculator">
+				<div id="ddc-left">
+					<div class="ddc-line">
+						<laber for="ddc-submit-date">Submit Date</laber>
+						<input type="text" name="ddc-submit-date" id="ddc-submit-date" />
+					</div>
+					<div class="ddc-line">
+						<laber for="ddc-turnaround-hours">Turnaround Hours</laber>
+						<input type="text" name="ddc-turnaround-hours" id="ddc-turnaround-hours" />
+					</div>
+					<div class="clearer">&nbsp;</div>
+				</div>
+				<div id="ddc-right">
+					<input type="button" name="ddc-submit" id="ddc-submit" value="Submit"></input>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

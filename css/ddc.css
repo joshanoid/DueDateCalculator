@@ -1,0 +1,32 @@
+html, body{
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.clearer{
+	clear: both;
+	overflow: hidden;
+	height: 0px;
+}
+
+#container{
+	width: 1000px;
+	margin: 0px auto;
+}
+
+#container h1{
+	text-align: center;
+}
+
+#container #due-date-calculator{
+	width: 600px;
+	margin: 0px auto;
+}
+
+#container #due-date-calculator #ddc-left,
+#container #due-date-calculator #ddc-right{
+	width: 300px;
+	float: left;
+}

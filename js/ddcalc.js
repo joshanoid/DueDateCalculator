@@ -1,8 +1,8 @@
-define(['jquery', 'jqueryui', 'underscore', 'backbone'], function ($, jqueryui, _, Backbone) {
+define(['jquery', 'underscore', 'backbone', 'jqueryuitime'], function ($, _, Backbone) {
     "use strict";
     return {
 		run: function(){
-			alert("DDC Run!");
+			console.log(arguments);
 		}
 	};
 });

@@ -3,6 +3,7 @@ require.config({
 	paths: {
 		jquery		: "https://code.jquery.com/jquery-2.1.0.min",
 		jqueryui	: "https://code.jquery.com/ui/1.10.4/jquery-ui.min",
+		jqueryuitime: "libs/jquery-ui-timepicker-addon",
 		underscore	: "libs/underscore-min",
 		backbone	: "libs/backbone-min"
 	},
@@ -14,6 +15,7 @@ require.config({
 			}
 		},
 		jqueryui: ['jquery'],
+		jqueryuitime: ['jqueryui'],
 		underscore:{
 			exports: "_"
 		},
