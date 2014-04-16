@@ -1,21 +1,15 @@
 define(['backbone'], function (Backbone) {
-	var DDModel = Backbone.Model.extend({
+	return Backbone.Model.extend({
         defaults: {
             submitDate: false,
-            turnaroundHours: 8,
-            calculatedDate: ''
+            turnaroundHours: 8
         },
-        initialize: function(){
-			//Trigger recalculate only if these properties changes
-//			this.on("change:submitDate", this.reCalculate);
-//			this.on("change:turnaroundHours", this.reCalculate);
-        },
-		validate: function( attributes ){
+        validate: function( attributes ){
             if(attributes.turnaroundHours < 0){
                 return "Turnaround Hours can't be smaller then 0 hours!";
             }
 			
-			if(attributes.submitDate === false){
+			if(attributes.submitDate === ""){
 				return "Please set a submit date!";
 			}
 			
@@ -26,10 +20,14 @@ define(['backbone'], function (Backbone) {
             }
 			
             if(sDate.getHours() < 9 || sDate.getHours() > 17){
-                return "Submit date must be between 9 AM and 5 PM!";
+                return "Submit time must be between 9 AM and 5 PM!";
             }
         },
-		calculate: function(){
+		calculateDueDate: function(){
+			if(!this.isValid()){
+				return this.validationError;
+			}
+	
 			var sd = new Date(this.get("submitDate")),
 				th = this.get("turnaroundHours"),
 				endDate = "", 
@@ -62,8 +60,4 @@ define(['backbone'], function (Backbone) {
 			return endDate;
 		}
     });
-    
-    return {
-		ddmodel: new DDModel()
-	};
 });

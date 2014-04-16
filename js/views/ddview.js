@@ -1,36 +1,22 @@
 define(['jquery', 'underscore', 'backbone', 'ddModel', 'text!templates/ddview.html', 'jqueryuitime'], 
-	function($, _, Backbone, ddm, topNavTemplate){
+	function($, _, Backbone, DueDateModel, topNavTemplate){
 		return Backbone.View.extend({
 			el: 'body',
 			template: topNavTemplate,
-			calculatedDateDOM: "",
+			jQCache: {},
 			render: function () {
 				this.$el.append(this.template);
-				this.calculatedDateDOM = $("#ddc-calculated-date"); //Cache
-				
-				//A trick to trigger validate on start
-				ddm.ddmodel.set({ 
-					submitDate: false
-				}, {validate : true});
+				this.jQCache = {
+					sdDOM: $("#ddc-submit-date"),
+					thDOM: $("#ddc-turnaround-hours"),		
+					cdDOM: $("#ddc-calculated-date")					
+				};
 				
 				//Initialize timepicker
-				$("#ddc-submit-date").datetimepicker({
-					onSelect: function(date){
-						ddm.ddmodel.set({
-							submitDate: date
-						}, {validate : true});
-					}
-				});
+				$("#ddc-submit-date").datetimepicker();
 
 				//Initialize turnaround hours spinner
-				$("#ddc-turnaround-hours").spinner({
-					min: 0,
-					spin: function(event, ui) {
-						ddm.ddmodel.set({
-							turnaroundHours: ui.value
-						}, {validate : true});
-					}
-				});
+				$("#ddc-turnaround-hours").spinner();
 
 				//Buttonize!
 				$("#ddc-submit").button();
@@ -41,10 +27,13 @@ define(['jquery', 'underscore', 'backbone', 'ddModel', 'text!templates/ddview.ht
 			events: {
 				"click #ddc-submit": "calculate"
 			},
-			calculate: function(event){
-				var dm = ddm.ddmodel;
+			calculate: function(){
+				var DDModel = new DueDateModel({
+					submitDate: this.jQCache.sdDOM.val(),
+					turnaroundHours: parseInt(this.jQCache.thDOM.val())
+				});
 				
-				this.calculatedDateDOM.text( !!dm.validationError ? dm.validationError : dm.calculate() );
+				this.jQCache.cdDOM.text( DDModel.calculateDueDate() );
 			}
 		});
 	}
